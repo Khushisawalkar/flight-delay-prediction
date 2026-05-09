@@ -74,7 +74,7 @@ def chart_airline_delay_rates(airline_df: pd.DataFrame) -> go.Figure:
                   annotation_font_color=BLUE)
 
     _apply_base(fig, "✈ Airline Delay Rates (%)")
-    fig.update_yaxis(title_text="Delay Rate (%)", title_font_color=TEXT_DIM)
+    fig.update_yaxes(title_text="Delay Rate (%)", title_font_color=TEXT_DIM)
     return fig
 
 
@@ -102,8 +102,8 @@ def chart_hourly_pattern(hourly_df: pd.DataFrame) -> go.Figure:
         fig.add_vline(x=h, line_color=f"rgba(245,158,11,0.15)", line_width=1)
 
     _apply_base(fig, "🕐 Delay Rate by Departure Hour")
-    fig.update_xaxis(title_text="Hour of Day", tickmode="linear", dtick=2)
-    fig.update_yaxis(title_text="Delay Rate (%)")
+    fig.update_xaxes(title_text="Hour of Day", tickmode="linear", dtick=2)
+    fig.update_yaxes(title_text="Delay Rate (%)")
     return fig
 
 
@@ -161,8 +161,8 @@ def chart_confusion_matrix(cm: list, model_name: str) -> go.Figure:
     ))
 
     _apply_base(fig, f"Confusion Matrix — {model_name}")
-    fig.update_xaxis(title_text="Predicted", side="bottom")
-    fig.update_yaxis(title_text="Actual", autorange="reversed")
+    fig.update_xaxes(title_text="Predicted", side="bottom")
+    fig.update_yaxes(title_text="Actual", autorange="reversed")
     return fig
 
 
@@ -193,8 +193,8 @@ def chart_roc_curves(model_results: dict) -> go.Figure:
     ))
 
     _apply_base(fig, "📈 ROC Curves — Model Comparison")
-    fig.update_xaxis(title_text="False Positive Rate", range=[0, 1])
-    fig.update_yaxis(title_text="True Positive Rate", range=[0, 1])
+    fig.update_xaxes(title_text="False Positive Rate", range=[0, 1])
+    fig.update_yaxes(title_text="True Positive Rate", range=[0, 1])
     return fig
 
 
@@ -246,7 +246,7 @@ def chart_feature_importance(importances: dict, model_name: str, top_n: int = 12
     ))
 
     _apply_base(fig, f"🔍 Feature Importance — {model_name}")
-    fig.update_xaxis(title_text="Importance Score")
+    fig.update_xaxes(title_text="Importance Score")
     fig.update_layout(height=420)
     return fig
 
@@ -275,7 +275,7 @@ def chart_model_comparison(model_results: dict) -> go.Figure:
 
     _apply_base(fig, "🤖 ML Model Performance Comparison")
     fig.update_layout(barmode="group")
-    fig.update_yaxis(title_text="Score", range=[0, 1.1])
+    fig.update_yaxes(title_text="Score", range=[0, 1.1])
     return fig
 
 
@@ -291,8 +291,8 @@ def chart_delay_distribution(values: list) -> go.Figure:
         hovertemplate="Delay: %{x} min<br>Flights: %{y}<extra></extra>",
     ))
     _apply_base(fig, "📊 Delay Duration Distribution (Delayed Flights Only)")
-    fig.update_xaxis(title_text="Delay Minutes")
-    fig.update_yaxis(title_text="Number of Flights")
+    fig.update_xaxes(title_text="Delay Minutes")
+    fig.update_yaxes(title_text="Number of Flights")
     return fig
 
 
@@ -313,7 +313,7 @@ def chart_airport_heatmap(airport_df: pd.DataFrame) -> go.Figure:
         hovertemplate="<b>%{y}</b><br>Delay Rate: %{x:.1f}%<extra></extra>",
     ))
     _apply_base(fig, "🛫 Airport Delay Rate Ranking")
-    fig.update_xaxis(title_text="Delay Rate (%)")
+    fig.update_xaxes(title_text="Delay Rate (%)")
     fig.update_layout(height=max(350, len(airport_df) * 28))
     return fig
 
@@ -377,8 +377,8 @@ def chart_route_scatter(route_df: pd.DataFrame) -> go.Figure:
         hovertemplate="<b>%{text}</b><br>Flights: %{x:,}<br>Delay Rate: %{y:.1f}%<extra></extra>",
     ))
     _apply_base(fig, "🗺 Route Volume vs Delay Rate")
-    fig.update_xaxis(title_text="Flight Volume")
-    fig.update_yaxis(title_text="Delay Rate (%)")
+    fig.update_xaxes(title_text="Flight Volume")
+    fig.update_yaxes(title_text="Delay Rate (%)")
     return fig
 
 
@@ -403,5 +403,5 @@ def chart_contribution_waterfall(contributions: list, baseline: float = 0.20) ->
     ))
 
     _apply_base(fig, "🔬 Prediction Factor Breakdown")
-    fig.update_yaxis(title_text="Impact on Delay Probability")
+    fig.update_yaxes(title_text="Impact on Delay Probability")
     return fig
