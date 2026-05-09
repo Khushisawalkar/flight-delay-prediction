@@ -435,7 +435,7 @@ with st.sidebar:
     st.markdown('<div class="section-hdr" style="margin-top:16px;">🤖 Model Training</div>', unsafe_allow_html=True)
 
     if st.button("⚡ Train All Models", use_container_width=True, type="primary"):
-        from train_model import train_all_models
+        from src.train import train_all_models
         from utils.preprocessing import generate_synthetic_dataset
 
         with st.spinner("Training Random Forest, XGBoost, Logistic Regression..."):
@@ -520,17 +520,17 @@ delay_dist = delay_distribution(df)
 # ── KPI Strip ─────────────────────────────────────────────────────────────────
 c1, c2, c3, c4, c5 = st.columns(5)
 kpis = [
-    (c1, overview["total_flights"], "Total Flights", f"{overview['unique_routes']} routes", "blue"),
+    (c1, f"{overview['total_flights']:,}", "Total Flights", f"{overview['unique_routes']} routes", "blue"),
     (c2, f"{overview['delay_rate']:.1%}", "Delay Rate", f"{overview['delayed_flights']:,} delayed", "red"),
     (c3, f"{overview['avg_delay_minutes']} min", "Avg Delay", "Delayed flights only", "amber"),
-    (c4, overview["unique_airlines"], "Airlines", "Tracked carriers", "green"),
-    (c5, overview["unique_airports"], "Airports", "Origin airports", "purple"),
+    (c4, f"{overview['unique_airlines']:,}", "Airlines", "Tracked carriers", "green"),
+    (c5, f"{overview['unique_airports']:,}", "Airports", "Origin airports", "purple"),
 ]
 for col, val, label, delta, color in kpis:
     with col:
         st.markdown(f"""
         <div class="metric-card {color}">
-            <div class="metric-val">{val:,}</div>
+            <div class="metric-val">{val}</div>
             <div class="metric-label">{label}</div>
             <div class="metric-delta">{delta}</div>
         </div>
