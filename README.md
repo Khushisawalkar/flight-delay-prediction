@@ -19,7 +19,8 @@ A machine learning-powered aviation analytics platform built with Python, Stream
 - Streamlit
 - Scikit-learn
 - XGBoost
-- Pandas & NumPy
+- Pandas
+- NumPy
 - Plotly
 
 ## Project Structure
@@ -37,3 +38,36 @@ flight-delay-prediction/
     ├── prediction.py
     ├── analytics.py
     └── visualizations.py
+```
+
+## Installation
+
+```bash
+git clone https://github.com/Khushisawalkar/flight-delay-prediction.git
+cd flight-delay-prediction
+pip install -r requirements.txt
+```
+
+## Run the Project
+
+```bash
+streamlit run app.py
+```
+
+## ML Models Used
+
+- Random Forest
+- XGBoost
+- Logistic Regression
+
+## Key Highlights
+
+- Feature engineering with cyclical encodings
+- Stratified train-test split
+- Explainable AI factor analysis
+- Interactive Plotly dashboards
+- Modular production-style architecture
+
+## Author
+
+Khushi Sawalkar
